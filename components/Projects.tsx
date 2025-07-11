@@ -50,6 +50,46 @@ export const Projects = () => {
       description:
         "Built a Netflix clone with HTML, CSS, and JavaScript featuring movie and TV show catalog, responsive design, and trailer functionality. Demonstrates modern web development skills and UI/UX design principles.",
     },
+    {
+      title: "Pipeline Editor DAG",
+      image: "/portfolio-2.png",
+      link: "https://github.com/MaurishKaushik11/Pipeline-editor-DAG",
+      tags: ["Python", "Data Pipeline", "DAG", "Workflow"],
+      description:
+        "A Python-based pipeline editor for creating and managing Directed Acyclic Graphs (DAGs). Enables visual workflow design and data processing pipeline management.",
+    },
+    {
+      title: "RBAC UI",
+      image: "/portfolio.png",
+      link: "https://github.com/MaurishKaushik11/RBAC-UI",
+      tags: ["JavaScript", "RBAC", "User Management", "Security"],
+      description:
+        "Role-Based Access Control (RBAC) user interface for managing user permissions and roles. Provides secure access control and user management functionality.",
+    },
+    {
+      title: "FAQ Project",
+      image: "/portfolio-2.png",
+      link: "https://github.com/MaurishKaushik11/MaurishPandat-my_faq_project",
+      tags: ["Web Development", "FAQ", "User Interface"],
+      description:
+        "A frequently asked questions (FAQ) project with an intuitive user interface for organizing and displaying common questions and answers.",
+    },
+    {
+      title: "Netflix Clone",
+      image: "/chatApp.png",
+      link: "https://github.com/MaurishKaushik11/Netflix-Clone",
+      tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "Streaming"],
+      description:
+        "A complete Netflix clone built with HTML, CSS, and JavaScript. Features movie and TV show catalog, responsive design, trailer functionality, and modern streaming platform UI.",
+    },
+    {
+      title: "CV Resume Builder",
+      image: "/solagig.jpg",
+      link: "https://github.com/MaurishKaushik11/CV-Resume-Builder",
+      tags: ["React", "Resume Builder", "PDF Generation", "UI/UX"],
+      description:
+        "A modern CV and resume builder application that allows users to create professional resumes with customizable templates, real-time preview, and PDF export functionality.",
+    },
   ];
 
   return (
@@ -69,7 +109,7 @@ export const Projects = () => {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full max-w-6xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 w-full max-w-7xl">
         {cards.map((project, index) => (
           <motion.div
             key={project.title}
