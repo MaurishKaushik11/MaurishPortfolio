@@ -6,7 +6,14 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 
 - **Modern Design**: Clean and responsive layout with smooth animations
 - **Interactive Components**: Floating navigation dock, typewriter effects, and motion animations
-- **Project Showcase**: Highlighted projects with GitHub links
+- **Project Showcase**: 8 highlighted projects with GitHub links including:
+  - Financial Assistant System (AI/Financial Analysis)
+  - DevSync (Real-time Collaborative Code Editor)
+  - Netflix Clone (Streaming Platform)
+  - Pipeline Editor DAG (Python Workflow)
+  - RBAC UI (Role-Based Access Control)
+  - FAQ Project (Web Development)
+  - CV Resume Builder (React/PDF Generation)
 - **Skills Section**: Animated skills display with marquee effect
 - **Contact Information**: Easy access to social media and contact details
 

@@ -1,9 +1,9 @@
 "use client";
 
 import { useInView } from "react-intersection-observer";
-import { motion, type Variants } from "framer-motion"; // ✅ Correct import with typing
-import Card from "./Card";
+import { motion, type Variants } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
 
 export const Projects = () => {
   const { ref, inView } = useInView({
@@ -12,23 +12,22 @@ export const Projects = () => {
     rootMargin: "200px 0px",
   });
 
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 90 },
+  const slideVariants: Variants = {
+    hidden: { opacity: 0, x: -100 },
     visible: (i = 0) => ({
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
-        delay: i * 0.5,
-        duration: 1,
+        delay: i * 0.3,
+        duration: 0.8,
         ease: "easeOut",
       },
     }),
   };
 
-  const cards = [
+  const projects = [
     {
       title: "Financial Assistant System",
-      image: "/portfolio.png",
       link: "https://github.com/MaurishKaushik11/Financial-Assistant-System",
       tags: ["AI", "Financial Analysis", "Investment", "Python"],
       description:
@@ -36,23 +35,13 @@ export const Projects = () => {
     },
     {
       title: "DevSync – Real-Time Collaborative Code Editor",
-      image: "/portfolio-2.png",
       link: "https://github.com/MaurishKaushik11/DevSync",
       tags: ["React", "Spring Boot", "WebSocket", "Redis", "PostgreSQL", "Docker"],
       description:
         "Developed a real-time collaborative code editor with an intuitive UI using React and Spring Boot, enabling multi-user live editing. Integrated WebSocket, Redis, and PostgreSQL for seamless sync, and containerized the application for efficient user experience.",
     },
     {
-      title: "Netflix Clone",
-      image: "/portfolio.png",
-      link: "https://github.com/MaurishKaushik11/Netflix-Clone",
-      tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-      description:
-        "Built a Netflix clone with HTML, CSS, and JavaScript featuring movie and TV show catalog, responsive design, and trailer functionality. Demonstrates modern web development skills and UI/UX design principles.",
-    },
-    {
       title: "Pipeline Editor DAG",
-      image: "/portfolio-2.png",
       link: "https://github.com/MaurishKaushik11/Pipeline-editor-DAG",
       tags: ["Python", "Data Pipeline", "DAG", "Workflow"],
       description:
@@ -60,7 +49,6 @@ export const Projects = () => {
     },
     {
       title: "RBAC UI",
-      image: "/portfolio.png",
       link: "https://github.com/MaurishKaushik11/RBAC-UI",
       tags: ["JavaScript", "RBAC", "User Management", "Security"],
       description:
@@ -68,7 +56,6 @@ export const Projects = () => {
     },
     {
       title: "FAQ Project",
-      image: "/portfolio-2.png",
       link: "https://github.com/MaurishKaushik11/MaurishPandat-my_faq_project",
       tags: ["Web Development", "FAQ", "User Interface"],
       description:
@@ -76,7 +63,6 @@ export const Projects = () => {
     },
     {
       title: "Netflix Clone",
-      image: "/chatApp.png",
       link: "https://github.com/MaurishKaushik11/Netflix-Clone",
       tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "Streaming"],
       description:
@@ -84,7 +70,6 @@ export const Projects = () => {
     },
     {
       title: "CV Resume Builder",
-      image: "/solagig.jpg",
       link: "https://github.com/MaurishKaushik11/CV-Resume-Builder",
       tags: ["React", "Resume Builder", "PDF Generation", "UI/UX"],
       description:
@@ -108,24 +93,57 @@ export const Projects = () => {
         />
       </div>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 w-full max-w-7xl">
-        {cards.map((project, index) => (
+      {/* Sliding Projects */}
+      <div className="w-full max-w-6xl">
+        {projects.map((project, index) => (
           <motion.div
             key={project.title}
             custom={index}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            variants={cardVariants}
-            className="w-full"
+            variants={slideVariants}
+            className="mb-8 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:bg-white/10"
           >
-            <Card
-              title={project.title}
-              image={project.image}
-              link={project.link}
-              tags={project.tags}
-              description={project.description}
-            />
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                  <div className="flex gap-2">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 transition-colors"
+                    >
+                      <IconBrandGithub className="h-5 w-5 text-purple-400" />
+                    </a>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 transition-colors"
+                    >
+                      <IconExternalLink className="h-5 w-5 text-blue-400" />
+                    </a>
+                  </div>
+                </div>
+                
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 text-xs font-medium bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
