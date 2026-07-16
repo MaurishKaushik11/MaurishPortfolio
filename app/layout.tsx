@@ -13,9 +13,9 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Maurish Kaushik | AI Product Manager",
+  title: "Maurish Kaushik | Product · Workflows · Scale",
   description:
-    "AI Product Manager portfolio — SaaS Labs & Siyu. Prototypes, Claude/LLM workflows, roadmaps, and cross-functional delivery that improve real products.",
+    "Maurish Kaushik — Product @ SaaS Labs, Built @ TryKiya. Scaling, refining, and building workflows that ship.",
   icons: {
     icon: "/favicon.ico",
   },

@@ -1,64 +1,87 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React from "react";
+import { FloatingDock } from "@/components/ui/floating-dock";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBriefcase,
+  IconCode,
+  IconHome,
+  IconLink,
+  IconSparkles,
+  IconMessageCircle,
+} from "@tabler/icons-react";
 import { site } from "@/lib/content";
 
-const navItems = [
-  { label: "Approach", href: "#approach" },
-  { label: "Experience", href: "#experience" },
-  { label: "Work", href: "#work" },
-  { label: "Skills", href: "#skills" },
-  { label: "Connect", href: "#contact" },
-];
-
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const links = [
+    {
+      title: "Home",
+      icon: <IconHome className="h-full w-full text-emerald-300" />,
+      href: "#hero",
+      onClick: () => scrollToSection("hero"),
+    },
+    {
+      title: "Approach",
+      icon: <IconSparkles className="h-full w-full text-emerald-300" />,
+      href: "#approach",
+      onClick: () => scrollToSection("approach"),
+    },
+    {
+      title: "Experience",
+      icon: <IconBriefcase className="h-full w-full text-emerald-300" />,
+      href: "#experience",
+      onClick: () => scrollToSection("experience"),
+    },
+    {
+      title: "Work",
+      icon: <IconCode className="h-full w-full text-emerald-300" />,
+      href: "#work",
+      onClick: () => scrollToSection("work"),
+    },
+    {
+      title: "Connect",
+      icon: <IconMessageCircle className="h-full w-full text-emerald-300" />,
+      href: "#contact",
+      onClick: () => scrollToSection("contact"),
+    },
+    {
+      title: "Linktree",
+      icon: <IconLink className="h-full w-full text-emerald-300" />,
+      href: site.links.linktree,
+      onClick: () => window.open(site.links.linktree, "_blank"),
+    },
+    {
+      title: "LinkedIn",
+      icon: <IconBrandLinkedin className="h-full w-full text-emerald-300" />,
+      href: site.links.linkedin,
+      onClick: () => window.open(site.links.linkedin, "_blank"),
+    },
+    {
+      title: "GitHub",
+      icon: <IconBrandGithub className="h-full w-full text-emerald-300" />,
+      href: site.links.github,
+      onClick: () => window.open(site.links.github, "_blank"),
+    },
+  ];
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-[color-mix(in_oklab,var(--ink)_8%,transparent)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between section-pad py-4">
-        <a href="#hero" className="font-display text-lg tracking-tight text-ink">
-          Maurish Kaushik
-        </a>
-
-        <ul className="hidden items-center gap-7 md:flex">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className="text-[13px] font-medium tracking-wide text-muted-foreground transition hover:text-ink"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href={site.links.linktree}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-full border border-[color-mix(in_oklab,var(--ink)_14%,transparent)] bg-surface/70 px-3.5 py-1.5 text-[13px] font-semibold text-ink backdrop-blur transition hover:border-accent hover:text-accent"
-        >
-          Links
-          <span aria-hidden className="text-accent text-xs">
-            ↗
-          </span>
-        </a>
-      </nav>
-    </header>
+    <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center md:bottom-auto md:top-6">
+      <div className="pointer-events-auto">
+        <FloatingDock
+          desktopClassName="translate-y-0 border-emerald-500/60 shadow-[0_0_40px_rgba(34,197,94,0.25)]"
+          mobileClassName="translate-y-0"
+          items={links}
+        />
+      </div>
+    </div>
   );
 }

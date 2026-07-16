@@ -6,7 +6,7 @@ import { MarqueeDemo } from "./MarqueeDemo";
 
 export const Myskills = () => {
   return (
-    <section id="skills" className="section-pad section-space bg-surface/60">
+    <section id="skills" className="section-pad section-space relative pb-40">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -15,15 +15,15 @@ export const Myskills = () => {
           transition={{ duration: 0.55 }}
           className="max-w-3xl"
         >
-          <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-muted-foreground">
+          <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-accent">
             Capabilities
           </p>
           <h2 className="mt-4 font-display text-4xl md:text-5xl tracking-tight text-ink leading-[1.1]">
             Product skills first — light technical fluency after
           </h2>
           <p className="mt-5 text-muted-foreground text-base leading-relaxed max-w-2xl">
-            The marquee is weighted toward AI product management, prototypes,
-            and delivery tools — not a full-stack résumé dump.
+            The marquee is weighted toward discovery, roadmaps, prototypes, and
+            delivery tools — how I scale and refine workflows.
           </p>
         </motion.div>
 
@@ -77,7 +77,9 @@ export const Myskills = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.45 }}
           >
-            <h3 className="font-display text-2xl text-ink">Product tools</h3>
+            <h3 className="font-display text-2xl text-ink relative z-10 pl-1">
+              Product tools
+            </h3>
             <p className="mt-2 text-sm text-muted-foreground">
               Jira, Trello, design, and analytics for day-to-day delivery
             </p>
@@ -99,7 +101,7 @@ export const Myskills = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.45, delay: 0.06 }}
           >
-            <h3 className="font-display text-2xl text-ink">
+            <h3 className="font-display text-2xl text-ink relative z-10 pl-1">
               Technical fluency
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">

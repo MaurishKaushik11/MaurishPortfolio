@@ -2,34 +2,45 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { experience, site } from "@/lib/content";
+import { Spotlight } from "./ui/Spotlight";
+import { site } from "@/lib/content";
 
 export const Hero = () => {
   return (
-    <section className="relative overflow-hidden section-pad pt-32 pb-20 md:pt-40 md:pb-28 min-h-[92vh] flex flex-col justify-end">
+    <section className="relative overflow-hidden section-pad pt-28 pb-24 md:pt-36 md:pb-32 min-h-[92vh] flex flex-col justify-center">
+      <div aria-hidden className="absolute inset-0 grid-fade opacity-70" />
+      <Spotlight
+        className="-top-40 left-0 md:-top-20 md:left-60"
+        fill="#22c55e"
+      />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-[-8%] top-[8%] h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,var(--glow),transparent_68%)] opacity-50 animate-[drift_20s_ease-in-out_infinite]"
+        className="pointer-events-none absolute right-[-10%] top-[5%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,#22c55e66,transparent_68%)] opacity-50 animate-[drift_18s_ease-in-out_infinite] blur-2xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-[-8%] bottom-[10%] h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle,#14532d88,transparent_70%)] opacity-60 animate-[pulse-glow_5s_ease-in-out_infinite]"
       />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
-            className="mb-7 text-[11px] font-semibold tracking-[0.28em] uppercase text-muted-foreground"
+            className="mb-7 text-[11px] font-semibold tracking-[0.28em] uppercase text-accent"
           >
             {site.role} · {site.location}
           </motion.p>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.05 }}
+            transition={{ duration: 0.75, delay: 0.05 }}
             className="font-display text-[clamp(2.75rem,7.5vw,5.75rem)] leading-[0.94] tracking-[-0.03em] text-ink"
           >
-            {site.name}
+            Hi I&apos;m{" "}
+            <span className="text-gradient-green">{site.name}.</span>
           </motion.h1>
 
           <motion.p
@@ -73,45 +84,22 @@ export const Hero = () => {
               rel="noopener noreferrer"
               className="btn-secondary inline-flex items-center gap-1.5"
             >
-              All my links
-              <span aria-hidden className="text-accent">
-                →
-              </span>
+              All my links →
             </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-14 pt-8 border-t border-[color-mix(in_oklab,var(--ink)_10%,transparent)]"
-          >
-            <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-muted-foreground mb-4">
-              Experience
-            </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-              {experience.map((job) => (
-                <div key={job.company}>
-                  <p className="text-sm font-semibold text-ink tracking-wide">
-                    {job.company}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    {job.role}
-                  </p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative justify-self-center lg:justify-self-end w-full max-w-[360px]"
+          initial={{ opacity: 0, x: 40, rotateY: -12 }}
+          animate={{ opacity: 1, x: 0, rotateY: 0 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="relative justify-self-center lg:justify-self-end w-full max-w-[360px] depth-stage"
         >
-          <div className="absolute -inset-3 -z-10 bg-accent/8" />
-          <div className="overflow-hidden bg-surface border border-[color-mix(in_oklab,var(--ink)_8%,transparent)]">
+          <div
+            aria-hidden
+            className="absolute -inset-8 -z-10 rounded-full bg-[radial-gradient(circle,#22c55e55,transparent_70%)] blur-2xl animate-[pulse-glow_4s_ease-in-out_infinite]"
+          />
+          <div className="portrait-3d overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--accent)_40%,transparent)] bg-surface">
             <Image
               src="/profile-2.jpeg"
               alt="Maurish Kaushik"
@@ -121,8 +109,8 @@ export const Hero = () => {
               className="h-[420px] w-full object-cover object-top md:h-[480px]"
             />
           </div>
-          <p className="mt-3 text-xs tracking-wide text-muted-foreground">
-            AI Product Manager · Prototypes · Roadmaps · Delivery
+          <p className="mt-5 text-center text-xs tracking-wide text-accent/90">
+            Scaling systems · Prototypes · Workflows
           </p>
         </motion.div>
       </div>

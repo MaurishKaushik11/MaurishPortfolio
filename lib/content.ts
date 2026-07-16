@@ -1,10 +1,9 @@
 export const site = {
   name: "Maurish Kaushik",
-  role: "AI Product Manager",
+  role: "Workflows · Scale · Product craft",
   headline:
-    "I combine product craft with AI fluency — turning messy workflows into clear roadmaps and shipped outcomes.",
-  tagline:
-    "Product Management Associate at SaaS Labs. Previously PM Intern at Siyu. I prototype fast, scope LLM features carefully, and ship with cross-functional teams.",
+    "I scale, refine, and build workflows that turn messy systems into clear, shippable product outcomes.",
+  tagline: "Product @ SaaS Labs · Built @ TryKiya.",
   location: "New Delhi, India",
   email: "maurishpandat@gmail.com",
   phone: "+917669170243",
@@ -30,7 +29,7 @@ export const howIWork = [
       "I use Claude and modern AI coding workflows to spin up working prototypes quickly, pressure-test UX, and brief engineering with something real.",
   },
   {
-    title: "AI product management",
+    title: "Refine AI-powered workflows",
     detail:
       "I scope LLM features, define success criteria for AI flows, and design experiences that stay useful when models are imperfect.",
   },
@@ -57,7 +56,7 @@ export const experience = [
     ],
   },
   {
-    company: "Siyu",
+    company: "TryKiya",
     role: "Product Management Intern",
     period: "Previous",
     focus: "AI · Automation · Roadmaps",
@@ -107,7 +106,7 @@ export const work = [
     outcome:
       "An end-to-end retail product vision connecting inventory, logistics, and lending into one operating flow.",
     tags: ["Retail ops", "AI forecasting", "Logistics"],
-    link: null,
+    link: "https://github.com/MaurishKaushik11/Bharat-Retail-Floww",
   },
 ];
 
@@ -199,7 +198,7 @@ export const highlights = [
     label: "Automation impact",
     value: "30%",
     detail:
-      "Reduction in manual task time from AI automation features shipped at Siyu",
+      "Reduction in manual task time from AI automation features shipped at TryKiya",
   },
   {
     label: "Hackathon signal",

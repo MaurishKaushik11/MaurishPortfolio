@@ -5,7 +5,7 @@ import { work } from "@/lib/content";
 
 export const Projects = () => {
   return (
-    <section id="work" className="section-pad section-space">
+    <section id="work" className="section-pad section-space relative">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -14,7 +14,7 @@ export const Projects = () => {
           transition={{ duration: 0.55 }}
           className="max-w-3xl"
         >
-          <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-muted-foreground">
+          <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-accent">
             Selected work
           </p>
           <h2 className="mt-4 font-display text-4xl md:text-5xl tracking-tight text-ink leading-[1.1]">
@@ -22,19 +22,18 @@ export const Projects = () => {
           </h2>
           <p className="mt-5 text-muted-foreground text-base md:text-lg leading-relaxed">
             Three pieces only — each framed as problem, approach, and outcome.
-            No filler clones.
           </p>
         </motion.div>
 
-        <div className="mt-16">
+        <div className="mt-14 space-y-6 depth-stage">
           {work.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 28, rotateX: 6 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="grid gap-8 border-t border-[color-mix(in_oklab,var(--ink)_10%,transparent)] py-12 lg:grid-cols-[0.85fr_1.15fr]"
+              transition={{ duration: 0.55, delay: index * 0.06 }}
+              className="glass-panel glass-panel-hover grid gap-8 rounded-2xl p-8 lg:grid-cols-[0.85fr_1.15fr]"
             >
               <div>
                 <p className="text-xs font-semibold tracking-[0.16em] uppercase text-muted-foreground">
@@ -51,16 +50,16 @@ export const Projects = () => {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 inline-flex text-sm font-semibold text-ink underline decoration-[color-mix(in_oklab,var(--accent)_45%,transparent)] underline-offset-4 transition hover:text-accent"
+                    className="mt-6 inline-flex text-sm font-semibold text-ink underline decoration-accent/50 underline-offset-4 transition hover:text-accent"
                   >
-                    View repository
+                    View repository →
                   </a>
                 ) : null}
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div>
-                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground">
+                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent">
                     Problem
                   </p>
                   <p className="mt-2 text-[15px] leading-relaxed text-ink">
@@ -68,7 +67,7 @@ export const Projects = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground">
+                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent">
                     Approach
                   </p>
                   <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
@@ -76,7 +75,7 @@ export const Projects = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground">
+                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent">
                     Outcome
                   </p>
                   <p className="mt-2 text-[15px] leading-relaxed font-medium text-ink">

@@ -16,25 +16,46 @@
   --font-display: var(--font-display);
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
 
   @keyframes drift {
     0%,
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0) scale(1);
     }
     50% {
-      transform: translate3d(1.5%, -2%, 0);
+      transform: translate3d(2%, -3%, 0) scale(1.06);
     }
   }
 
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(18px);
+  @keyframes float-y {
+    0%,
+    100% {
+      transform: translateY(0) rotateX(8deg) rotateY(-8deg);
     }
-    to {
+    50% {
+      transform: translateY(-14px) rotateX(6deg) rotateY(-6deg);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.45;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, -40%) scale(1);
     }
   }
 
@@ -58,17 +79,17 @@
 }
 
 :root {
-  --background: #f4f6f8;
-  --foreground: #12171c;
-  --ink: #12171c;
-  --muted: #e2e7ec;
-  --muted-foreground: #5a6570;
-  --surface: #ffffff;
-  --accent: #1a4d3e;
-  --accent-foreground: #f4f6f8;
-  --line: #12171c14;
-  --glow: #c8d7d0;
-  --radius: 0.5rem;
+  --background: #030806;
+  --foreground: #e8fff4;
+  --ink: #e8fff4;
+  --muted: #0c1612;
+  --muted-foreground: #8aa897;
+  --surface: #0a1210;
+  --accent: #22c55e;
+  --accent-foreground: #03140a;
+  --line: #22c55e22;
+  --glow: #22c55e;
+  --radius: 1rem;
 }
 
 @layer base {
@@ -85,14 +106,16 @@
     font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
     background-color: var(--background);
     background-image:
-      linear-gradient(180deg, #f8fafb 0%, #f4f6f8 50%, #eef2f5 100%),
-      radial-gradient(ellipse 65% 40% at 100% 0%, #d5e2dc 0%, transparent 55%);
+      radial-gradient(ellipse 80% 50% at 15% -10%, #14532d55, transparent 55%),
+      radial-gradient(ellipse 60% 40% at 90% 0%, #16653433, transparent 50%),
+      radial-gradient(ellipse 50% 30% at 50% 100%, #052e1633, transparent 60%),
+      linear-gradient(180deg, #030806 0%, #050a08 50%, #020503 100%);
     background-attachment: fixed;
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--accent) 28%, white);
-    color: var(--ink);
+    background: color-mix(in oklab, var(--accent) 45%, black);
+    color: white;
   }
 }
 
@@ -110,33 +133,100 @@
 
 .hairline {
   height: 1px;
-  background: color-mix(in oklab, var(--ink) 12%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--accent) 45%, transparent),
+    transparent
+  );
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-semibold tracking-wide text-[var(--background)] transition duration-200 hover:bg-accent;
+  @apply inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold tracking-wide text-accent-foreground shadow-[0_0_28px_rgba(34,197,94,0.35)] transition duration-200 hover:bg-[#4ade80] hover:shadow-[0_0_40px_rgba(34,197,94,0.55)];
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-sm border border-[color-mix(in_oklab,var(--ink)_16%,transparent)] bg-surface/80 px-6 py-3 text-sm font-semibold tracking-wide text-ink transition duration-200 hover:border-accent hover:text-accent;
+  @apply inline-flex items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--accent)_35%,transparent)] bg-white/5 px-6 py-3 text-sm font-semibold tracking-wide text-ink backdrop-blur transition duration-200 hover:border-accent hover:bg-accent/10 hover:text-accent;
+}
+
+.glass-panel {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(34, 197, 94, 0.04) 40%,
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid color-mix(in oklab, var(--accent) 22%, transparent);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+}
+
+.glass-panel-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, border-color 0.35s ease;
+  transform-style: preserve-3d;
+}
+
+.glass-panel-hover:hover {
+  transform: translateY(-6px) rotateX(2deg) scale(1.01);
+  border-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(34, 197, 94, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.depth-stage {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.portrait-3d {
+  transform: rotateX(8deg) rotateY(-10deg);
+  animation: float-y 7s ease-in-out infinite;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.65),
+    0 0 60px rgba(34, 197, 94, 0.2);
+}
+
+.text-gradient-green {
+  background: linear-gradient(120deg, #86efac 0%, #22c55e 45%, #4ade80 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .link-hub {
   background: linear-gradient(
-    135deg,
-    color-mix(in oklab, var(--accent) 55%, #0b1c24),
-    #12171c 45%,
-    color-mix(in oklab, var(--glow) 35%, #1a2a32)
+    145deg,
+    #02150c 0%,
+    #041f12 35%,
+    #06301c 70%,
+    #0a3d24 100%
   );
+  border: 1px solid rgba(34, 197, 94, 0.35);
   box-shadow:
-    0 24px 60px color-mix(in oklab, var(--ink) 18%, transparent),
-    inset 0 1px 0 color-mix(in oklab, white 18%, transparent);
+    0 24px 60px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(34, 197, 94, 0.2),
+    inset 0 1px 0 rgba(34, 197, 94, 0.12);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.35s ease;
 }
 
 .link-hub:hover {
+  transform: translateY(-6px) scale(1.01);
   box-shadow:
-    0 32px 70px color-mix(in oklab, var(--ink) 22%, transparent),
-    inset 0 1px 0 color-mix(in oklab, white 22%, transparent);
+    0 32px 70px rgba(0, 0, 0, 0.75),
+    0 0 60px rgba(34, 197, 94, 0.32),
+    inset 0 1px 0 rgba(34, 197, 94, 0.2);
+}
+
+.grid-fade {
+  background-image:
+    linear-gradient(rgba(34, 197, 94, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 197, 94, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent);
 }

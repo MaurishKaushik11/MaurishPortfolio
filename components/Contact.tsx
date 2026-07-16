@@ -64,16 +64,17 @@ export const Contact = () => {
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-muted-foreground">
+            <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-accent">
               Connect
             </p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl tracking-tight text-ink leading-[1.05]">
               One hub for everything. Or reach me directly.
             </h2>
             <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
-              Open to AI PM / APM roles. Tap the hub for all links in one place —
-              resume, socials, and more — or use a channel below if you already
-              know how you want to connect.
+              Open to roles where scaling systems, refining workflows, and
+            shipping product matter. Tap the hub for all links in one place —
+            resume, socials, and more — or use a channel below if you already
+            know how you want to connect.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -106,31 +107,31 @@ export const Contact = () => {
             whileHover={{ y: -4 }}
             className="link-hub group relative block overflow-hidden rounded-2xl p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
-            <div className="relative overflow-hidden rounded-[0.9rem] bg-ink px-6 py-7 text-[var(--background)] sm:px-8 sm:py-9">
+            <div className="relative overflow-hidden rounded-[0.9rem] bg-[#03140a]/80 px-6 py-7 text-emerald-50 sm:px-8 sm:py-9">
               <div
                 aria-hidden
-                className="pointer-events-none absolute -right-10 -top-16 h-48 w-48 rounded-full bg-[radial-gradient(circle,var(--glow),transparent_70%)] opacity-40 transition duration-500 group-hover:opacity-70 group-hover:scale-110"
+                className="pointer-events-none absolute -right-10 -top-16 h-48 w-48 rounded-full bg-[radial-gradient(circle,#22c55e88,transparent_70%)] opacity-50 transition duration-500 group-hover:opacity-80 group-hover:scale-110"
               />
               <div
                 aria-hidden
-                className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-accent/40 blur-2xl transition duration-500 group-hover:opacity-80"
+                className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-[#14532d] blur-2xl opacity-70 transition duration-500 group-hover:opacity-90"
               />
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-[11px] font-semibold tracking-[0.24em] uppercase text-white/55">
+                    <p className="text-[11px] font-semibold tracking-[0.24em] uppercase text-accent">
                       Link hub
                     </p>
-                    <p className="mt-3 font-display text-3xl sm:text-4xl tracking-tight text-white">
+                    <p className="mt-3 font-display text-3xl sm:text-4xl tracking-tight text-emerald-50">
                       All my links
                     </p>
-                    <p className="mt-2 text-sm text-white/65 leading-relaxed max-w-xs">
+                    <p className="mt-2 text-sm text-emerald-200/70 leading-relaxed max-w-xs">
                       Resume, LinkedIn, GitHub, socials — one tap, always up to
                       date.
                     </p>
                   </div>
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition duration-300 group-hover:bg-accent group-hover:rotate-12">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/15 text-accent transition duration-300 group-hover:bg-accent group-hover:text-black group-hover:rotate-12">
                     <IconArrowUpRight className="h-5 w-5" />
                   </span>
                 </div>
@@ -139,18 +140,18 @@ export const Contact = () => {
                   {hubPreview.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide text-white/80"
+                      className="rounded-full border border-emerald-500/30 bg-[#052e16] px-3 py-1 text-xs font-medium tracking-wide text-emerald-200"
                     >
                       {item}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-5">
-                  <span className="text-sm font-medium text-white/70">
+                <div className="mt-8 flex items-center justify-between border-t border-emerald-500/25 pt-5">
+                  <span className="text-sm font-medium text-emerald-300/80">
                     linktr.ee/maurishkaushik
                   </span>
-                  <span className="text-sm font-semibold text-white transition group-hover:text-[color-mix(in_oklab,var(--glow)_90%,white)]">
+                  <span className="text-sm font-semibold text-accent transition group-hover:text-emerald-200">
                     Open hub →
                   </span>
                 </div>
@@ -169,7 +170,7 @@ export const Contact = () => {
           <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-muted-foreground mb-2">
             Direct channels
           </p>
-          <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-3 border-t border-[color-mix(in_oklab,var(--ink)_10%,transparent)]">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {channels.map((link) => (
               <a
                 key={link.label}
@@ -180,9 +181,9 @@ export const Contact = () => {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className="group flex items-start gap-3 border-b border-[color-mix(in_oklab,var(--ink)_8%,transparent)] py-5 pr-4 transition hover:text-accent"
+                className="group glass-panel glass-panel-hover flex items-start gap-3 rounded-xl px-4 py-4 transition"
               >
-                <span className="mt-0.5 text-muted-foreground group-hover:text-accent">
+                <span className="mt-0.5 text-accent">
                   {link.icon}
                 </span>
                 <span>
