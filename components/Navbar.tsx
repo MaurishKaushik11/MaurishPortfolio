@@ -1,91 +1,64 @@
 "use client";
 
-import React from "react";
-import { FloatingDock } from "@/components/ui/floating-dock";
-import {
-  IconBrandGithub,
-  IconBrandLine,
-  IconBrandLinkedin,
-  IconBrandX,
-  IconCode,
-  IconHome,
-  IconTerminal2,
-} from "@tabler/icons-react";
+import { useEffect, useState } from "react";
+import { site } from "@/lib/content";
+
+const navItems = [
+  { label: "Approach", href: "#approach" },
+  { label: "Experience", href: "#experience" },
+  { label: "Work", href: "#work" },
+  { label: "Skills", href: "#skills" },
+  { label: "Connect", href: "#contact" },
+];
 
 export function Navbar() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const [scrolled, setScrolled] = useState(false);
 
-  const links = [
-    {
-      title: "Home",
-      icon: (
-        <IconHome className="h-full w-full text-black" />
-      ),
-      href: "#hero",
-      onClick: () => scrollToSection("hero"),
-    },
-    {
-      title: "Projects",
-      icon: (
-        <IconTerminal2 className="h-full w-full text-black" />
-      ),
-      href: "#projects",
-      onClick: () => scrollToSection("projects"),
-    },
-    {
-      title: "Skills",
-      icon: (
-        <IconCode className="h-full w-full text-black" />
-      ),
-      href: "#skills",
-      onClick: () => scrollToSection("skills"),
-    },
-    {
-      title: "Contact",
-      icon: (
-        <IconBrandLine className="h-full w-full text-black" />
-      ),
-      href: "#contact",
-      onClick: () => scrollToSection("contact"),
-    },
-    {
-      title: "Linkedin",
-      icon: (
-        <IconBrandLinkedin className="h-full w-full text-black" />
-      ),
-      href: "https://www.linkedin.com/in/maurishkaushik/",
-      onClick: () => window.open("https://www.linkedin.com/in/maurishkaushik/", "_blank"),
-    },
-    {
-      title: "X",
-      icon: (
-        <IconBrandX className="h-full w-full text-black" />
-      ),
-      href: "https://x.com/maurishkaushik",
-      onClick: () => window.open("https://x.com/maurishkaushik", "_blank"),
-    },
-    {
-      title: "GitHub",
-      icon: (
-        <IconBrandGithub className="h-full w-full text-black" />
-      ),
-      href: "https://github.com/MaurishKaushik11",
-      onClick: () => window.open("https://github.com/MaurishKaushik11", "_blank"),
-    },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <div className="flex items-center justify-center h-[90px] w-full">
-      <FloatingDock
-        desktopClassName="translate-y-20"
-        mobileClassName="translate-x-25"
-        items={links}
-      />
-    </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-[color-mix(in_oklab,var(--ink)_8%,transparent)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] backdrop-blur-xl"
+          : "bg-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex max-w-6xl items-center justify-between section-pad py-4">
+        <a href="#hero" className="font-display text-lg tracking-tight text-ink">
+          Maurish Kaushik
+        </a>
+
+        <ul className="hidden items-center gap-7 md:flex">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className="text-[13px] font-medium tracking-wide text-muted-foreground transition hover:text-ink"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href={site.links.linktree}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full border border-[color-mix(in_oklab,var(--ink)_14%,transparent)] bg-surface/70 px-3.5 py-1.5 text-[13px] font-semibold text-ink backdrop-blur transition hover:border-accent hover:text-accent"
+        >
+          Links
+          <span aria-hidden className="text-accent text-xs">
+            ↗
+          </span>
+        </a>
+      </nav>
+    </header>
   );
 }

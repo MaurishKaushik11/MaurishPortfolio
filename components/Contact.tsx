@@ -1,90 +1,208 @@
-import { IconBrandGithub, IconBrandGmail, IconBrandLinkedin, IconBrandX } from "@tabler/icons-react";
-import { TypeAnimation } from "react-type-animation";
+"use client";
+
+import {
+  IconArrowUpRight,
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandX,
+  IconMail,
+  IconPhone,
+} from "@tabler/icons-react";
+import { motion } from "motion/react";
+import { site } from "@/lib/content";
 
 export const Contact = () => {
+  const channels = [
+    {
+      href: site.links.linkedin,
+      icon: <IconBrandLinkedin className="h-4 w-4" />,
+      label: "LinkedIn",
+      detail: "Work & recommendations",
+    },
+    {
+      href: `mailto:${site.email}`,
+      icon: <IconMail className="h-4 w-4" />,
+      label: "Email",
+      detail: site.email,
+    },
+    {
+      href: `tel:${site.phone}`,
+      icon: <IconPhone className="h-4 w-4" />,
+      label: "Phone",
+      detail: site.phoneDisplay,
+    },
+    {
+      href: site.links.github,
+      icon: <IconBrandGithub className="h-4 w-4" />,
+      label: "GitHub",
+      detail: "@MaurishKaushik11",
+    },
+    {
+      href: site.links.x,
+      icon: <IconBrandX className="h-4 w-4" />,
+      label: "X",
+      detail: "@maurishkaushik",
+    },
+  ];
+
+  const hubPreview = [
+    "Resume",
+    "LinkedIn",
+    "GitHub",
+    "X",
+    "Email",
+    "More",
+  ];
+
   return (
-    <div className="flex flex-col w-full items-center justify-center px-4 sm:px-6 md:px-10 lg:px-20 pt-20 md:pt-32">
-      
-      {/* Heading */}
-      <div className="w-full text-center mb-6">
-      <TypeAnimation
-        sequence={["Get In Touch", 3000]}
-        wrapper="h1"
-        cursor={false}
-        repeat={Infinity}
-        className="text-3xl sm:text-4xl font-bold text-purple-500"
-      />
-      </div>
+    <section id="contact" className="section-pad section-space pb-36">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-muted-foreground">
+              Connect
+            </p>
+            <h2 className="mt-4 font-display text-4xl md:text-5xl tracking-tight text-ink leading-[1.05]">
+              One hub for everything. Or reach me directly.
+            </h2>
+            <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
+              Open to AI PM / APM roles. Tap the hub for all links in one place —
+              resume, socials, and more — or use a channel below if you already
+              know how you want to connect.
+            </p>
 
-      {/* Subtitle */}
-      <p className="text-center text-gray-600 text-base sm:text-lg max-w-2xl px-2 sm:px-0 mb-10">
-      Let&apos;s Chat. Got a project idea?{" "}
-      <span className="block sm:inline">
-        I&apos;d love to collaborate! Reach out, and let&apos;s build something amazing together.
-      </span>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={`mailto:${site.email}`}
+                className="btn-secondary"
+              >
+                Email Maurish
+              </a>
+              <a
+                href={site.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                Resume PDF
+              </a>
+            </div>
+          </motion.div>
 
-      </p>
+          {/* Linktree hub — interactive primary connect surface */}
+          <motion.a
+            href={site.links.linktree}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.65, delay: 0.08 }}
+            whileHover={{ y: -4 }}
+            className="link-hub group relative block overflow-hidden rounded-2xl p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          >
+            <div className="relative overflow-hidden rounded-[0.9rem] bg-ink px-6 py-7 text-[var(--background)] sm:px-8 sm:py-9">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-10 -top-16 h-48 w-48 rounded-full bg-[radial-gradient(circle,var(--glow),transparent_70%)] opacity-40 transition duration-500 group-hover:opacity-70 group-hover:scale-110"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-accent/40 blur-2xl transition duration-500 group-hover:opacity-80"
+              />
 
-      {/* Contact Links */}
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 w-full max-w-md">
-        
-        <ContactLink
-          href="https://github.com/MaurishKaushik11"
-          icon={<IconBrandGithub className="h-5 w-5 text-neutral-800 dark:text-neutral-300" />}
-          label="GitHub"
-        />
+              <div className="relative z-10">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[11px] font-semibold tracking-[0.24em] uppercase text-white/55">
+                      Link hub
+                    </p>
+                    <p className="mt-3 font-display text-3xl sm:text-4xl tracking-tight text-white">
+                      All my links
+                    </p>
+                    <p className="mt-2 text-sm text-white/65 leading-relaxed max-w-xs">
+                      Resume, LinkedIn, GitHub, socials — one tap, always up to
+                      date.
+                    </p>
+                  </div>
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition duration-300 group-hover:bg-accent group-hover:rotate-12">
+                    <IconArrowUpRight className="h-5 w-5" />
+                  </span>
+                </div>
 
-        <ContactLink
-          href="https://www.linkedin.com/in/maurishkaushik/"
-          icon={<IconBrandLinkedin className="h-5 w-5 text-neutral-800 dark:text-neutral-300" />}
-          label="LinkedIn"
-        />
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {hubPreview.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide text-white/80"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
 
-        <ContactLink
-          href="mailto:maurishpandat@gmail.com"
-          icon={<IconBrandGmail className="h-5 w-5 text-neutral-800 dark:text-neutral-300" />}
-          label="Email"
-        />
+                <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-5">
+                  <span className="text-sm font-medium text-white/70">
+                    linktr.ee/maurishkaushik
+                  </span>
+                  <span className="text-sm font-semibold text-white transition group-hover:text-[color-mix(in_oklab,var(--glow)_90%,white)]">
+                    Open hub →
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.a>
+        </div>
 
-        <ContactLink
-          href="tel:+917669170243"
-          icon={<IconBrandGmail className="h-5 w-5 text-neutral-800 dark:text-neutral-300" />}
-          label="Phone"
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="mt-16"
+        >
+          <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-muted-foreground mb-2">
+            Direct channels
+          </p>
+          <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-3 border-t border-[color-mix(in_oklab,var(--ink)_10%,transparent)]">
+            {channels.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  link.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className="group flex items-start gap-3 border-b border-[color-mix(in_oklab,var(--ink)_8%,transparent)] py-5 pr-4 transition hover:text-accent"
+              >
+                <span className="mt-0.5 text-muted-foreground group-hover:text-accent">
+                  {link.icon}
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-ink group-hover:text-accent">
+                    {link.label}
+                  </span>
+                  <span className="mt-0.5 block text-sm text-muted-foreground">
+                    {link.detail}
+                  </span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </motion.div>
 
-        <ContactLink
-          href="https://x.com/maurishkaushik"
-          icon={<IconBrandX className="h-5 w-5 text-neutral-800 dark:text-neutral-300" />}
-          label="X"
-        />
-      </div>
-
-      <div className="h-[1px] w-full mt-8 bg-gray-400 my-2 ">
-        <p className="text-center text-white justify-center text-md mt-5 ">
-          Made with ❤️ by Maurish Kaushik
+        <div className="hairline mt-16 mb-6" />
+        <p className="text-sm text-muted-foreground">
+          © {new Date().getFullYear()} {site.name} · {site.role}
         </p>
       </div>
-    </div>
+    </section>
   );
 };
-
-// Reusable Link Component
-const ContactLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
-  <a
-    href={href}
-    target="_blank"
-    className="group/btn shadow-input relative flex h-12 w-full items-center justify-start space-x-3 rounded-md bg-gray-950 px-4 font-medium text-white dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626]"
-  >
-    {icon}
-    <span className="text-md text-neutral-300 dark:text-neutral-300">{label}</span>
-    <BottomGradient />
-  </a>
-);
-
-// Gradient Hover Effect
-const BottomGradient = () => (
-  <>
-    <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100"></span>
-    <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100"></span>
-  </>
-);

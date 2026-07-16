@@ -1,80 +1,46 @@
-# Maurish Kaushik - Portfolio
+# Maurish Kaushik — AI Product Manager Portfolio
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features smooth animations, interactive components, and a clean design showcasing my projects and skills.
+Professional portfolio positioning Maurish as an **AI Product Manager**: product craft + AI fluency (prototypes, Claude/LLM workflows, vibe coding) with experience at SaaS Labs and Siyu.
 
-## 🚀 Features
+## Features
 
-- **Modern Design**: Clean and responsive layout with smooth animations
-- **Interactive Components**: Floating navigation dock, typewriter effects, and motion animations
-- **Project Showcase**: 8 highlighted projects with GitHub links including:
-  - Financial Assistant System (AI/Financial Analysis)
-  - DevSync (Real-time Collaborative Code Editor)
-  - Netflix Clone (Streaming Platform)
-  - Pipeline Editor DAG (Python Workflow)
-  - RBAC UI (Role-Based Access Control)
-  - FAQ Project (Web Development)
-  - CV Resume Builder (React/PDF Generation)
-- **Skills Section**: Animated skills display with marquee effect
-- **Contact Information**: Easy access to social media and contact details
+- AI PM hero and “How I work” approach (prototypes, Claude, Jira/Trello)
+- Experience-first storytelling from resume (SaaS Labs, Siyu)
+- Selected work only: Financial Assistant System, DevSync, Bharat Retail Flow
+- PM-weighted skills marquee (not a Vue/Prisma stack flex)
+- Connect section with Linktree, email, LinkedIn, GitHub, X
 
-## 🛠️ Technologies Used
+## Stack
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS, Framer Motion
-- **Icons**: Tabler Icons, Lucide React
-- **Animations**: Lenis smooth scrolling, Type Animation
+- Next.js 15, React 19, TypeScript
+- Tailwind CSS, Motion
+- Lenis smooth scrolling
 
-## 🚀 Getting Started
-
-First, install the dependencies:
+## Getting started
 
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-```
-
-Then, run the development server:
-
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-## 📁 Project Structure
+## Structure
 
 ```
-├── app/                 # Next.js app directory
-│   ├── layout.tsx      # Root layout
-│   ├── page.tsx        # Home page
-│   └── globals.css     # Global styles
-├── components/         # React components
-│   ├── Hero.tsx       # Hero section
-│   ├── Projects.tsx   # Projects showcase
-│   ├── Myskills.tsx   # Skills section
-│   ├── Contact.tsx    # Contact information
-│   └── Navbar.tsx     # Navigation
-└── public/            # Static assets
+├── app/                  # Next.js app
+├── components/           # Hero, HowIWork, Experience, Projects, Skills, Contact
+├── lib/content.ts        # Single source of truth for copy
+└── public/               # Assets + resume PDF
 ```
 
-## 🌐 Live Demo
+## Live
 
-Visit my portfolio at: [Your deployed URL here]
+[https://maurish-portfolio.vercel.app/](https://maurish-portfolio.vercel.app/)
 
-## 📧 Contact
+## Contact
 
-- **GitHub**: [@MaurishKaushik11](https://github.com/MaurishKaushik11)
-- **LinkedIn**: [Maurish Kaushik](https://www.linkedin.com/in/maurishkaushik/)
-- **Email**: maurishpandat@gmail.com
-- **X (Twitter)**: [@maurishkaushik](https://x.com/maurishkaushik)
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+- Linktree: [linktr.ee/maurishkaushik](https://linktr.ee/maurishkaushik)
+- LinkedIn: [maurishkaushik](https://www.linkedin.com/in/maurishkaushik/)
+- Email: maurishpandat@gmail.com
+- GitHub: [@MaurishKaushik11](https://github.com/MaurishKaushik11)

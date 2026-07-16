@@ -2,111 +2,63 @@
 
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
-import Image from "next/image";
+import { marqueePm, marqueeTech } from "@/lib/content";
 
-const reviews = [
-  {
-    name: "React JS",
-    img: "https://img.icons8.com/?size=100&id=123603&format=png&color=000000",
-  },
-  {
-    name: "Vue JS",
-    img: "https://img.icons8.com/?size=100&id=tbleCw0ch6QC&format=png&color=000000",
-  },
-  {
-    name: "Javascript",
-    img: "https://img.icons8.com/?size=100&id=108784&format=png&color=000000",
-  },
-  {
-    name: "Typescript",
-    img: "https://img.icons8.com/?size=100&id=wpZmKzk11AzJ&format=png&color=000000",
-  },
-  {
-    name: "Prisma",
-    img: "https://img.icons8.com/?size=100&id=aqb9SdV9P8oC&format=png&color=000000",
-  },
-  {
-    name: "Mongo DB",
-    img: "https://img.icons8.com/?size=100&id=bosfpvRzNOG8&format=png&color=000000",
-  },
-  {
-    name: "HTML",
-    img: "https://img.icons8.com/?size=100&id=20909&format=png&color=000000",
-  },
-  {
-    name: "CSS",
-    img: "https://img.icons8.com/?size=100&id=21278&format=png&color=000000",
-  },
-  {
-    name: "Tailwind CSS",
-    img: "https://img.icons8.com/?size=100&id=4PiNHtUJVbLs&format=png&color=000000",
-  },
-  {
-    name: "Python",
-    img: "https://img.icons8.com/?size=100&id=13441&format=png&color=000000",
-  },
-  {
-    name: "Java",
-    img: "https://img.icons8.com/?size=100&id=13679&format=png&color=000000",
-  },
-  {
-    name: "Express JS",
-    img: "https://img.icons8.com/?size=100&id=kg46nzoJrmTR&format=png&color=000000",
-  },
-  {
-    name: "Git",
-    img: "https://img.icons8.com/?size=100&id=20906&format=png&color=000000",
-  },
-  {
-    name: "Github",
-    img: "https://img.icons8.com/?size=100&id=62856&format=png&color=000000",
-  },
-  {
-    name: "Next JS",
-    img: "https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000",
-  },
-];
-
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
-
-const ReviewCard = ({
-  img,
+const SkillChip = ({
   name,
+  emphasis = false,
 }: {
-  img: string;
   name: string;
+  emphasis?: boolean;
 }) => {
   return (
     <figure
       className={cn(
-        "relative w-auto cursor-pointer overflow-hidden rounded-xl border p-4",
-        "border-gray-50/[.1] bg-gray-50/[.10] hover:bg-gray-50/[.15]",
+        "relative w-auto overflow-hidden border px-4 py-2.5",
+        emphasis
+          ? "border-[color-mix(in_oklab,var(--accent)_35%,transparent)] bg-accent/8 text-ink"
+          : "border-[color-mix(in_oklab,var(--ink)_10%,transparent)] bg-surface/80 text-muted-foreground",
       )}
     >
-      <div className="flex flex-row items-center gap-2">
-        <Image className="rounded-full" width="40" height="40" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-lg font-bold leading-tight text-white">
-            {name}
-          </figcaption>
-        </div>
-      </div>
+      <figcaption
+        className={cn(
+          "whitespace-nowrap text-sm tracking-wide",
+          emphasis ? "font-semibold" : "font-medium",
+        )}
+      >
+        {name}
+      </figcaption>
     </figure>
   );
 };
 
 export function MarqueeDemo() {
+  const mid = Math.ceil(marqueePm.length / 2);
+  const firstRow = marqueePm.slice(0, mid);
+  const secondRow = marqueePm.slice(mid);
+
   return (
-    <div className="relative flex max-h-auto p-6 w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background">
-      <Marquee pauseOnHover className="[--duration:20s]">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.name} {...review} />
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-2">
+      <p className="mb-4 self-start text-[11px] font-semibold tracking-[0.22em] uppercase text-muted-foreground">
+        Product management · tools · AI craft
+      </p>
+      <Marquee pauseOnHover className="[--duration:45s]">
+        {firstRow.map((name) => (
+          <SkillChip key={name} name={name} emphasis />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s]">
-        {secondRow.map((review) => (
-          <ReviewCard key={review.name} {...review} />
+      <Marquee reverse pauseOnHover className="[--duration:50s]">
+        {secondRow.map((name) => (
+          <SkillChip key={name} name={name} emphasis />
+        ))}
+      </Marquee>
+
+      <p className="mb-3 mt-8 self-start text-[11px] font-semibold tracking-[0.22em] uppercase text-muted-foreground">
+        Technical fluency
+      </p>
+      <Marquee pauseOnHover className="[--duration:28s]">
+        {marqueeTech.map((name) => (
+          <SkillChip key={name} name={name} />
         ))}
       </Marquee>
     </div>
