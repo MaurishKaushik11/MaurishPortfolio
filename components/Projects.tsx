@@ -45,16 +45,24 @@ export const Projects = () => {
                 <p className="mt-4 text-sm text-accent font-medium tracking-wide">
                   {item.tags.join("  ·  ")}
                 </p>
-                {item.link ? (
+                <div className="mt-6 flex flex-wrap gap-5">
+                  <a
+                    href={item.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex text-sm font-semibold text-accent underline decoration-accent/50 underline-offset-4 transition hover:text-ink"
+                  >
+                    View live product →
+                  </a>
                   <a
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 inline-flex text-sm font-semibold text-ink underline decoration-accent/50 underline-offset-4 transition hover:text-accent"
+                    className="inline-flex text-sm font-semibold text-ink underline decoration-accent/50 underline-offset-4 transition hover:text-accent"
                   >
-                    View repository →
+                    Repository →
                   </a>
-                ) : null}
+                </div>
               </div>
 
               <div className="space-y-5">

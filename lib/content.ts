@@ -82,6 +82,7 @@ export const work = [
     outcome:
       "A product path from raw financial signals to tailored recommendations users can act on.",
     tags: ["AI product", "Fintech", "Decision support"],
+    live: "https://financial-assistant-system.vercel.app",
     link: "https://github.com/MaurishKaushik11/Financial-Assistant-System",
   },
   {
@@ -94,6 +95,7 @@ export const work = [
     outcome:
       "A live collaboration experience with durable sync architecture and containerized delivery.",
     tags: ["Collaboration", "Real-time", "Product systems"],
+    live: "https://devsync.vercel.app",
     link: "https://github.com/MaurishKaushik11/DevSync",
   },
   {
@@ -106,6 +108,7 @@ export const work = [
     outcome:
       "An end-to-end retail product vision connecting inventory, logistics, and lending into one operating flow.",
     tags: ["Retail ops", "AI forecasting", "Logistics"],
+    live: "https://bharat-retail-flow.vercel.app",
     link: "https://github.com/MaurishKaushik11/Bharat-Retail-Floww",
   },
 ];
@@ -179,6 +182,12 @@ export const softSkills = [
 ];
 
 export const leadership = [
+  {
+    org: "Product & Hackathon Teams",
+    role: "Team Lead · Cross-functional collaborator",
+    detail:
+      "Led hackathon teams from problem framing through MVP delivery and collaborated with internal cross-functional teams to drive product improvements.",
+  },
   {
     org: "GDSC–GCET",
     role: "Executive",
