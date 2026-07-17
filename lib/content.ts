@@ -95,7 +95,7 @@ export const work = [
     outcome:
       "A live collaboration experience with durable sync architecture and containerized delivery.",
     tags: ["Collaboration", "Real-time", "Product systems"],
-    live: "https://devsync.vercel.app",
+    live: "https://dev-sync-eight.vercel.app",
     link: "https://github.com/MaurishKaushik11/DevSync",
   },
   {
