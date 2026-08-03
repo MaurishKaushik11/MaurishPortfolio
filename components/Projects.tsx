@@ -26,20 +26,35 @@ export const Projects = () => {
         </motion.div>
 
         <div className="mt-14 space-y-6 depth-stage">
-          {work.map((item, index) => (
+          {work.map((item, index) => {
+            const isFeatured = "featured" in item && item.featured;
+            return (
             <motion.article
               key={item.title}
               initial={{ opacity: 0, y: 28, rotateX: 6 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: index * 0.06 }}
-              className="glass-panel glass-panel-hover grid gap-8 rounded-2xl p-8 lg:grid-cols-[0.85fr_1.15fr]"
+              className={`glass-panel glass-panel-hover grid gap-8 rounded-2xl p-8 lg:grid-cols-[0.85fr_1.15fr] ${
+                isFeatured
+                  ? "ring-1 ring-accent/35 lg:p-10"
+                  : ""
+              }`}
             >
               <div>
+                {isFeatured && (
+                  <p className="mb-3 inline-flex items-center rounded-full bg-accent/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+                    Flagship product
+                  </p>
+                )}
                 <p className="text-xs font-semibold tracking-[0.16em] uppercase text-muted-foreground">
                   {item.period}
                 </p>
-                <h3 className="mt-3 font-display text-3xl text-ink tracking-tight">
+                <h3
+                  className={`mt-3 font-display tracking-tight text-ink ${
+                    isFeatured ? "text-4xl md:text-[2.75rem]" : "text-3xl"
+                  }`}
+                >
                   {item.title}
                 </h3>
                 <p className="mt-4 text-sm text-accent font-medium tracking-wide">
@@ -92,7 +107,8 @@ export const Projects = () => {
                 </div>
               </div>
             </motion.article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

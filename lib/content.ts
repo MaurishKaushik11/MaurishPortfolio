@@ -73,6 +73,20 @@ export const experience = [
 
 export const work = [
   {
+    title: "DevSync",
+    period: "Jun 2025",
+    featured: true,
+    problem:
+      "Distributed teams lose speed when collaboration tools break context, sync, and the sense of working together.",
+    approach:
+      "Designed and shipped a real-time collaborative IDE — multi-user editing, live preview, presence, and session invite flows built for focused pair work.",
+    outcome:
+      "Flagship product: a live browser workspace with durable sync, containerized delivery, and a branded collaboration UI.",
+    tags: ["Flagship", "Real-time collab", "Product systems"],
+    live: "https://dev-sync-eight.vercel.app",
+    link: "https://github.com/MaurishKaushik11/DevSync",
+  },
+  {
     title: "Financial Assistant System",
     period: "Sep 2024",
     problem:
@@ -84,19 +98,6 @@ export const work = [
     tags: ["AI product", "Fintech", "Decision support"],
     live: "https://financial-assistant-system.vercel.app",
     link: "https://github.com/MaurishKaushik11/Financial-Assistant-System",
-  },
-  {
-    title: "DevSync",
-    period: "Jun 2025",
-    problem:
-      "Distributed teams lose speed when collaboration tools break context and sync.",
-    approach:
-      "Shaped a real-time collaborative coding product — multi-user editing, reliable sync, and an interface built for focused work.",
-    outcome:
-      "A live collaboration experience with durable sync architecture and containerized delivery.",
-    tags: ["Collaboration", "Real-time", "Product systems"],
-    live: "https://dev-sync-eight.vercel.app",
-    link: "https://github.com/MaurishKaushik11/DevSync",
   },
   {
     title: "Bharat Retail Flow",
